@@ -9,34 +9,119 @@
 import Foundation
 
 struct BoardingPass: Decodable {
-    let flights: String //M1 / M2
-    let fullName: String //LASTNAME/FIRSTNAME
-    let reservationNumber: String //XXXXXX
-    let origin: String //GVA
-    let destination: String //SFO
-    let flightCode: String //LX / EZS
-    let flightNumber: String //1419
     
+    //MARK: - Mandatory Items
+    
+    /// Format Code of the boarding pass.
+    /// Usually "M".
+    let formatCode: String //M
+    
+    /// The number of legs included in the boarding pass data.
+    /// Example : "1", "2", ...
+    let legsNumber: Int
+    
+    /// Full name of the boarding pass. Truncated to the first 20 characters.
+    /// Format : "LASTNAME/FULLNAME"
+    let fullName: String
+    
+    /// Electronic Ticket Indicator.
+    /// Usually "E".
+    let electronicTicketIndicator: String
+    
+    /// A 6 or 7 character booking identifier (airline).
+    /// Example : "QAPBNA ", "EW3NM4C"
+    let reservationNumber: String
+    
+    /// The IATA code of the flight origin.
+    /// Example : "GVA", "ZRH"
+    let fromCityIATA: String
+    
+    /// The IATA code of the flight destination.
+    /// Example : "JFK", "SFO"
+    let toCityIATA: String
+    
+    /// Designator of the operating carrier. IATA or ICAO.
+    /// Example : "LX", "EZS"
+    let operatingCarrier: String
+    
+    /// Flight number. 5 characters.
+    /// Example : "0022 ", "2616 ", "10374"
+    let flightNumber: String
+    
+    /// Flight Date in the Julian calendar.
+    /// Example : "226" (August 14th)
+    let flightDate: Int
+    
+    /// Compartement Code which is not the same as the booking fare class.
+    /// Example : "Y", "M", "R"
+    let compartmentCode: String
+    
+    /// Seat Number. 4 characters.
+    /// Example : "001A", "022E", "104A"
+    let seatNumber: String
+    
+    /// The Check-In Sequence Number.
+    /// Example : "0025 ", "10523"
+    let sequenceNumber: Int
+    
+    /// The current passenger status
+    /// Usually : 3
+    let passengerStatus: Int
+    
+    //MARK: - Initialisation
     init(from data: String) throws {
         
-        guard data[39...42].string.isInt else {
-            throw BoardingPassError.invalidFlightNumber
-        }
+        //Format Code
+        self.formatCode = data[0].string
         
-        self.flights = data[0...1].string
+        //Legs Number
+        guard data[1].string.isInt else {
+            throw BoardingPassError.invalidLegsNumber
+        }
+        self.legsNumber = Int(data[1].string)!
+        
+        //Full Name
         self.fullName = data[2...21].string.trimmingCharacters(in: .whitespaces)
-        self.reservationNumber = data[22...29].string.trimmingCharacters(in: .whitespaces)
-        self.origin = data[30...32].string
-        self.destination = data[33...35].string
-        self.flightCode = data[36...38].string.trimmingCharacters(in: .whitespaces)
-        self.flightNumber = data[39...42].string.trimmingCharacters(in: .whitespaces)
+        
+        //Electronic Ticket Indicator
+        self.electronicTicketIndicator = data[22].string
+        
+        //Reservation Number
+        self.reservationNumber = data[23...29].string.trimmingCharacters(in: .whitespaces)
+        
+        //Origin City IATA
+        self.fromCityIATA = data[30...32].string
+        
+        //Destination City IATA
+        self.toCityIATA = data[33...35].string
+        
+        //Operating Carrier
+        self.operatingCarrier = data[36...38].string.trimmingCharacters(in: .whitespaces)
+        
+        //Flight Number
+        self.flightNumber = data[39...43].string.trimmingCharacters(in: .whitespaces)
+        
+        //Flight Date
+        self.flightDate = Int(data[44...46].string) ?? 000
+        
+        //Compartment Code
+        self.compartmentCode = data[47].string
+        
+        //Seat Number
+        self.seatNumber = data[48...51].string
+        
+        //Sequence
+        self.sequenceNumber = Int(data[52...56].string.trimmingCharacters(in: .whitespaces)) ?? 00000
+        
+        //Passenger Status
+        self.passengerStatus = Int(data[57].string) ?? 0
     }
     
 }
 
 enum BoardingPassError: Error {
     
-    case invalidFlightNumber
+    case invalidLegsNumber
 }
 
 // Extensions for the substring
@@ -84,4 +169,3 @@ extension String {
         return Int(self) != nil
     }
 }
-
