@@ -65,6 +65,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     boardingPass = try BoardingPass(from: metadata!)
                     dump(boardingPass)
                     
+                    //performSegue(withIdentifier: "showDetail", sender: self)
+                    
                 } catch {
                     print(error)
                 }
@@ -108,6 +110,15 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         } catch {
             print(error)
             return
+        }
+    }
+    
+    //MARK: - Segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            let destVC = segue.destination as! BoardingPassTableViewController
+            destVC.boardingPass = boardingPass
         }
     }
 

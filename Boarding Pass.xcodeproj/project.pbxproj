@@ -13,6 +13,7 @@
 		65D638F3225BCE0A00FA9726 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65D638F2225BCE0A00FA9726 /* Assets.xcassets */; };
 		65D638F6225BCE0A00FA9726 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D638F4225BCE0A00FA9726 /* LaunchScreen.storyboard */; };
 		65D638FE225BCE2D00FA9726 /* BoardingPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D638FD225BCE2D00FA9726 /* BoardingPass.swift */; };
+		65D63900225CE96E00FA9726 /* BoardingPassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D638FF225CE96E00FA9726 /* BoardingPassTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		65D638F5225BCE0A00FA9726 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65D638F7225BCE0A00FA9726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65D638FD225BCE2D00FA9726 /* BoardingPass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardingPass.swift; sourceTree = "<group>"; };
+		65D638FF225CE96E00FA9726 /* BoardingPassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingPassTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				65D638EB225BCE0700FA9726 /* AppDelegate.swift */,
 				65D638ED225BCE0700FA9726 /* ViewController.swift */,
+				65D638FF225CE96E00FA9726 /* BoardingPassTableViewController.swift */,
 				65D638FD225BCE2D00FA9726 /* BoardingPass.swift */,
 				65D638EF225BCE0700FA9726 /* Main.storyboard */,
 				65D638F2225BCE0A00FA9726 /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D63900225CE96E00FA9726 /* BoardingPassTableViewController.swift in Sources */,
 				65D638EE225BCE0700FA9726 /* ViewController.swift in Sources */,
 				65D638EC225BCE0700FA9726 /* AppDelegate.swift in Sources */,
 				65D638FE225BCE2D00FA9726 /* BoardingPass.swift in Sources */,
