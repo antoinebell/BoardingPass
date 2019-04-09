@@ -68,7 +68,6 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                 
                 do {
                     boardingPass = try BoardingPass(from: metadata!)
-                    dump(boardingPass)
                     
                     DispatchQueue.main.async {
                         self.boardingPassButton.alpha = 1

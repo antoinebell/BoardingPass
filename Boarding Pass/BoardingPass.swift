@@ -92,6 +92,9 @@ struct BoardingPass: Decodable {
     
     //MARK: - Conditional Items
     
+    /// Field size of the mandatory items.
+    private let kConditionalUniqueItemsSize: Int = 28
+    
     /// **Conditional** | The beginning of the version number.
     /// *- Item 8 -*
     /// Example : ">", "1"
@@ -137,7 +140,7 @@ struct BoardingPass: Decodable {
     /// Size of `checkInSource`
     private let kCheckInSourceSize: Int = 1
     /// Size of the combined previous data.
-    private var kCheckInSourceSizePrevious: Int = 5
+    private let kCheckInSourceSizePrevious: Int = 5
     /// Size of the combined previous structured message (Item 10)
     private let kCheckInSourceSizeStructuredPrevious: Int = 1
     
@@ -147,7 +150,7 @@ struct BoardingPass: Decodable {
     /// Size of `checkInSource`
     private let kBoardingPassSourceSize: Int = 1
     /// Size of the combined previous data.
-    private var kBoardingPassSizePrevious: Int = 6
+    private let kBoardingPassSizePrevious: Int = 6
     /// Size of the combined previous structured message (Item 10)
     private let kBoardingPassSizeStructuredPrevious: Int = 2
     
@@ -157,7 +160,7 @@ struct BoardingPass: Decodable {
     /// Size of `boardingPassIssueDate`
     private let kBoardingPassIssueDateSize: Int = 4
     /// Size of the combined previous data.
-    private var kBoardingPassIssueDateSizePrevious: Int = 7
+    private let kBoardingPassIssueDateSizePrevious: Int = 7
     /// Size of the combined previous structured message (Item 10)
     private let kBoardingPassIssueDateSizeStructuredPrevious: Int = 3
     
@@ -168,7 +171,7 @@ struct BoardingPass: Decodable {
     /// Size of `documentType`
     private let kDocumentTypeSize: Int = 1
     /// Size of the combined previous data.
-    private var kDocumentTypeSizePrevious: Int = 11
+    private let kDocumentTypeSizePrevious: Int = 11
     /// Size of the combined previous structured message (Item 10)
     private let kDocumentTypeSizeStructuredPrevious: Int = 7
     
@@ -176,10 +179,10 @@ struct BoardingPass: Decodable {
     /// *- Item 21 -*
     /// Example : "LX", "SK"
     let airlineBoardingPassIssuer: String
-    /// Size of `documentType`
+    /// Size of `airlineBoardingPassIssuer`
     private let kAirlineBoardingPassIssuerSize: Int = 3
     /// Size of the combined previous data.
-    private var kAirlineBoardingPassIssuerSizePrevious: Int = 12
+    private let kAirlineBoardingPassIssuerSizePrevious: Int = 12
     /// Size of the combined previous structured message (Item 10)
     private let kAirlineBoardingPassIssuerSizeStructuredPrevious: Int = 8
     
@@ -187,12 +190,121 @@ struct BoardingPass: Decodable {
     /// *- Item 23 -*
     /// Example : "LX", "SK"
     let baggageTag: String
-    /// Size of `documentType`
+    /// Size of `baggageTag`
     private let kBaggageTagSize: Int = 13
     /// Size of the combined previous data.
-    private var kBaggageTagSizePrevious: Int = 15
+    private let kBaggageTagSizePrevious: Int = 15
     /// Size of the combined previous structured message (Item 10)
     private let kBaggageTagSizeStructuredPrevious: Int = 11
+    
+    /// **Conditional** | The field size of the following repeated structured message.
+    /// *- Item 17 -*
+    /// Count for the length of the conditional data identified as unique (the 7 next variables)
+    /// Example : "18"
+    let followingStructureMessageSizeRepeated: Int
+    
+    /// **Conditional** | The airline numeric code.
+    /// *- Item 142 -*
+    /// Example : "724" (LX), "117" (SK)
+    let airlineNumericCode: Int
+    /// Size of `airlineNumericCode`
+    private let kAirlineNumericCodeSize: Int = 3
+    /// Size of the combined previous data.
+    private let kAirlineNumericCodeSizePrevious: Int = 2
+    /// Size of the combined previous data (Item 17).
+    private let kAirlineNumericCodeSizeStructuredPrevious: Int = 0
+    
+    /// **Conditional** | The ticket number.
+    /// *- Item 143 -*
+    /// Example : "1234567890"
+    let documentSerialNumber: Int
+    /// Size of `airlineNumericCode`
+    private let kDocumentSerialNumberSize: Int = 10
+    /// Size of the combined previous data.
+    private let kDocumentSerialNumberSizePrevious: Int = 5
+    /// Size of the combined previous data (Item 17).
+    private let kDocumentSerialNumberSizeStructuredPrevious: Int = 3
+    
+    /// **Conditional** | Selectee indicator. Used by some agencies for additional screening.
+    /// *- Item 18 -*
+    let selecteeIndicator: String
+    /// Size of `airlineNumericCode`
+    private let kSelecteeIndicatorSize: Int = 1
+    /// Size of the combined previous data.
+    private let kSelecteeIndicatorSizePrevious: Int = 15
+    /// Size of the combined previous data (Item 17).
+    private let kSelecteeIndicatorSizeStructuredPrevious: Int = 14
+    
+    /// **Conditional** | Assists carriers to identify passengers requiring travel documents verification.
+    /// *- Item 108 -*
+    let internationalDocumentationVerification: String
+    /// Size of `airlineNumericCode`
+    private let kInternationalDocumentationVerificationSize: Int = 1
+    /// Size of the combined previous data.
+    private let kInternationalDocumentationVerificationSizePrevious: Int = 16
+    /// Size of the combined previous data (Item 17).
+    private let kInternationalDocumentationVerificationSizeStructuredPrevious: Int = 15
+    
+    /// **Conditional** | Marketing Carrier designator.
+    /// *- Item 19 -*
+    let carrierDesignator: String
+    /// Size of `airlineNumericCode`
+    private let kCarrierDesignatorSize: Int = 3
+    /// Size of the combined previous data.
+    private let kCarrierDesignatorSizePrevious: Int = 17
+    /// Size of the combined previous data (Item 17).
+    private let kCarrierDesignatorSizeStructuredPrevious: Int = 19
+    
+    /// **Conditional** | Frequent Flier Airline designator.
+    /// *- Item 20 -*
+    let frequentFlierDesignator: String
+    /// Size of `airlineNumericCode`
+    private let kFrequentFlierDesignatorSize: Int = 3
+    /// Size of the combined previous data.
+    private let kFrequentFlierDesignatorSizePrevious: Int = 20
+    /// Size of the combined previous data (Item 17).
+    private let kFrequentFlierDesignatorSizeStructuredPrevious: Int = 22
+    
+    /// **Conditional** | Frequent Flier number.
+    /// *- Item 236 -*
+    let frequentFlierNumber: Int
+    /// Size of `airlineNumericCode`
+    private let kFrequentFlierNumberSize: Int = 16
+    /// Size of the combined previous data.
+    private let kFrequentFlierNumberSizePrevious: Int = 23
+    /// Size of the combined previous data (Item 17).
+    private let kFrequentFlierNumberSizeStructuredPrevious: Int = 25
+    
+    /// **Conditional** | ID/AD indicator.
+    /// *- Item 89 -*
+    let idAdIndicator: String
+    /// Size of `airlineNumericCode`
+    private let kIdAdIndicatorSize: Int = 1
+    /// Size of the combined previous data.
+    private let kIdAdIndicatorSizePrevious: Int = 39
+    /// Size of the combined previous data (Item 17).
+    private let kIdAdIndicatorSizeStructuredPrevious: Int = 41
+    
+    /// **Conditional** | Free baggage allowance.
+    /// *- Item 118 -*
+    let freeBaggageAllowance: String
+    /// Size of `airlineNumericCode`
+    private let kFreeBaggageAllowanceSize: Int = 3
+    /// Size of the combined previous data.
+    private let kFreeBaggageAllowanceSizePrevious: Int = 40
+    /// Size of the combined previous data (Item 17).
+    private let kFreeBaggageAllowanceSizeStructuredPrevious: Int = 42
+    
+    /// **Conditional** | Fast track security check.
+    /// *- Item 254 -*
+    let fastTrack: String
+    /// Size of `airlineNumericCode`
+    private let kFastTrackSize: Int = 1
+    /// Size of the combined previous data.
+    private let kFastTrackSizePrevious: Int = 43
+    /// Size of the combined previous data (Item 17).
+    private let kFastTrackSizeStructuredPrevious: Int = 45
+    
     
     //MARK: - Initialisation
     init(from data: String) throws {
@@ -339,6 +451,105 @@ struct BoardingPass: Decodable {
             self.baggageTag = data[startIndex...endIndex].string
         } else {
             self.baggageTag = "No Data"
+        }
+        
+        //Following structure message repeated size
+        let size = data[88...89].string
+        guard let followingStructureRepeatedSize = UInt8(size, radix: 16) else {
+            throw BoardingPassError.invalidHexadecimal
+        }
+        self.followingStructureMessageSizeRepeated = Int(followingStructureRepeatedSize)
+        
+        //Following structured message (Item 17)
+        
+        //Airline Numeric Code
+        if self.followingStructureMessageSizeRepeated > (kAirlineNumericCodeSizeStructuredPrevious + kAirlineNumericCodeSize) {
+            let startIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kAirlineNumericCodeSizePrevious
+            let endIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kAirlineNumericCodeSizePrevious + kAirlineNumericCodeSize - 1
+            self.airlineNumericCode = Int(data[startIndex...endIndex].string) ?? 000
+        } else {
+            self.airlineNumericCode = 000
+        }
+        
+        //Document Serial Number
+        if self.followingStructureMessageSizeRepeated > (kDocumentSerialNumberSizeStructuredPrevious + kDocumentSerialNumberSize) {
+            let startIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kDocumentSerialNumberSizePrevious
+            let endIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kDocumentSerialNumberSizePrevious + kDocumentSerialNumberSize - 1
+            self.documentSerialNumber = Int(data[startIndex...endIndex].string) ?? 0000000000
+        } else {
+            self.documentSerialNumber = 0000000000
+        }
+        
+        //Selectee indicator
+        if self.followingStructureMessageSizeRepeated > (kSelecteeIndicatorSizeStructuredPrevious + kSelecteeIndicatorSize) {
+            let startIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kSelecteeIndicatorSizePrevious
+            let endIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kSelecteeIndicatorSizePrevious + kSelecteeIndicatorSize - 1
+            self.selecteeIndicator = data[startIndex...endIndex].string
+        } else {
+            self.selecteeIndicator = ""
+        }
+        
+        //International documentation verification
+        if self.followingStructureMessageSizeRepeated > (kInternationalDocumentationVerificationSizeStructuredPrevious + kInternationalDocumentationVerificationSize) {
+            let startIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kInternationalDocumentationVerificationSizePrevious
+            let endIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kInternationalDocumentationVerificationSizePrevious + kInternationalDocumentationVerificationSize - 1
+            self.internationalDocumentationVerification = data[startIndex...endIndex].string
+        } else {
+            self.internationalDocumentationVerification = ""
+        }
+        
+        //Marketing carrier designator
+        if self.followingStructureMessageSizeRepeated > (kCarrierDesignatorSizeStructuredPrevious + kCarrierDesignatorSize) {
+            let startIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kCarrierDesignatorSizePrevious
+            let endIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kCarrierDesignatorSizePrevious + kCarrierDesignatorSize - 1
+            self.carrierDesignator = data[startIndex...endIndex].string
+        } else {
+            self.carrierDesignator = ""
+        }
+        
+        //Frequent flier designator
+        if self.followingStructureMessageSizeRepeated > (kFrequentFlierDesignatorSizeStructuredPrevious + kFrequentFlierDesignatorSize) {
+            let startIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kFrequentFlierDesignatorSizePrevious
+            let endIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kFrequentFlierDesignatorSizePrevious + kFrequentFlierDesignatorSize - 1
+            self.frequentFlierDesignator = data[startIndex...endIndex].string
+        } else {
+            self.frequentFlierDesignator = ""
+        }
+        
+        //Frequent flier number
+        if self.followingStructureMessageSizeRepeated > (kFrequentFlierNumberSizeStructuredPrevious + kFrequentFlierNumberSize) {
+            let startIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kFrequentFlierNumberSizePrevious
+            let endIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kFrequentFlierNumberSizePrevious + kFrequentFlierNumberSize - 1
+            self.frequentFlierNumber = Int(data[startIndex...endIndex].string.trimmingCharacters(in: .whitespaces)) ?? 0
+        } else {
+            self.frequentFlierNumber = 0
+        }
+        
+        //ID/AD indicator
+        if self.followingStructureMessageSizeRepeated > (kIdAdIndicatorSizeStructuredPrevious + kIdAdIndicatorSize) {
+            let startIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kIdAdIndicatorSizePrevious
+            let endIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kIdAdIndicatorSizePrevious + kIdAdIndicatorSize - 1
+            self.idAdIndicator = data[startIndex...endIndex].string
+        } else {
+            self.idAdIndicator = ""
+        }
+        
+        //Free baggage allowance
+        if self.followingStructureMessageSizeRepeated > (kFreeBaggageAllowanceSizeStructuredPrevious + kFreeBaggageAllowanceSize) {
+            let startIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kFreeBaggageAllowanceSizePrevious
+            let endIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kFreeBaggageAllowanceSizePrevious + kFreeBaggageAllowanceSize - 1
+            self.freeBaggageAllowance = data[startIndex...endIndex].string
+        } else {
+            self.freeBaggageAllowance = ""
+        }
+        
+        //Fast track
+        if self.followingStructureMessageSizeRepeated > (kFastTrackSizeStructuredPrevious + kFastTrackSize) {
+            let startIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kFastTrackSizePrevious
+            let endIndex = kMandatoryItemsSize + kConditionalUniqueItemsSize + kFastTrackSizePrevious + kFastTrackSize - 1
+            self.fastTrack = data[startIndex...endIndex].string
+        } else {
+            self.fastTrack = ""
         }
     }
     

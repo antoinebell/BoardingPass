@@ -32,7 +32,7 @@ class BoardingPassTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 25
+        return 36
     }
 
     
@@ -115,6 +115,39 @@ class BoardingPassTableViewController: UITableViewController {
         case 24:
             cell.textLabel?.text = "Baggage Tag :"
             cell.detailTextLabel?.text = boardingPass.baggageTag
+        case 25:
+            cell.textLabel?.text = "Following Data Structure (Repeated) :"
+            cell.detailTextLabel?.text = boardingPass.followingStructureMessageSizeRepeated.string
+        case 26:
+            cell.textLabel?.text = "Airline Numeric Code :"
+            cell.detailTextLabel?.text = boardingPass.airlineNumericCode.string
+        case 27:
+            cell.textLabel?.text = "Document Serial Number :"
+            cell.detailTextLabel?.text = boardingPass.documentSerialNumber.string
+        case 28:
+            cell.textLabel?.text = "Selectee indicator :"
+            cell.detailTextLabel?.text = boardingPass.selecteeIndicator
+        case 29:
+            cell.textLabel?.text = "International Documentation Verification :"
+            cell.detailTextLabel?.text = boardingPass.internationalDocumentationVerification
+        case 30:
+            cell.textLabel?.text = "Marketing carrier designator :"
+            cell.detailTextLabel?.text = boardingPass.carrierDesignator
+        case 31:
+            cell.textLabel?.text = "Frequent Flier Airline :"
+            cell.detailTextLabel?.text = boardingPass.frequentFlierDesignator
+        case 32:
+            cell.textLabel?.text = "Frequent Flier Number :"
+            cell.detailTextLabel?.text = boardingPass.frequentFlierNumber.string
+        case 33:
+            cell.textLabel?.text = "ID/AD Indicator :"
+            cell.detailTextLabel?.text = boardingPass.idAdIndicator
+        case 34:
+            cell.textLabel?.text = "Free Baggage Allowance :"
+            cell.detailTextLabel?.text = boardingPass.freeBaggageAllowance
+        case 35:
+            cell.textLabel?.text = "Fast Track :"
+            cell.detailTextLabel?.text = boardingPass.fastTrack
         default:
             cell.textLabel?.text = ""
             cell.detailTextLabel?.text = ""
