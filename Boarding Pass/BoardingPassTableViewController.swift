@@ -20,6 +20,9 @@ class BoardingPassTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableView.automaticDimension
     }
 
     // MARK: - Table view data source
@@ -29,7 +32,7 @@ class BoardingPassTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 25
     }
 
     
@@ -43,6 +46,75 @@ class BoardingPassTableViewController: UITableViewController {
         case 1:
             cell.textLabel?.text = "Legs :"
             cell.detailTextLabel?.text = boardingPass.legsNumber.string
+        case 2:
+            cell.textLabel?.text = "Full Name :"
+            cell.detailTextLabel?.text = boardingPass.fullName
+        case 3:
+            cell.textLabel?.text = "Electronic Ticket Indicator :"
+            cell.detailTextLabel?.text = boardingPass.electronicTicketIndicator
+        case 4:
+            cell.textLabel?.text = "Reservation Number :"
+            cell.detailTextLabel?.text = boardingPass.reservationNumber
+        case 5:
+            cell.textLabel?.text = "From :"
+            cell.detailTextLabel?.text = boardingPass.fromCityIATA
+        case 6:
+            cell.textLabel?.text = "To :"
+            cell.detailTextLabel?.text = boardingPass.toCityIATA
+        case 7:
+            cell.textLabel?.text = "Carrier :"
+            cell.detailTextLabel?.text = boardingPass.operatingCarrier
+        case 8:
+            cell.textLabel?.text = "Flight Number :"
+            cell.detailTextLabel?.text = boardingPass.flightNumber
+        case 9:
+            cell.textLabel?.text = "Flight Date :"
+            cell.detailTextLabel?.text = boardingPass.flightDate.string
+        case 10:
+            cell.textLabel?.text = "Compartment Code :"
+            cell.detailTextLabel?.text = boardingPass.compartmentCode
+        case 11:
+            cell.textLabel?.text = "Seat :"
+            cell.detailTextLabel?.text = boardingPass.seatNumber
+        case 12:
+            cell.textLabel?.text = "Sequence :"
+            cell.detailTextLabel?.text = boardingPass.sequenceNumber.string
+        case 13:
+            cell.textLabel?.text = "Passenger Status :"
+            cell.detailTextLabel?.text = boardingPass.passengerStatus.string
+        case 14:
+            cell.textLabel?.text = "Variable Size :"
+            cell.detailTextLabel?.text = boardingPass.variableSize.string
+        case 15:
+            cell.textLabel?.text = "Version # Beginning :"
+            cell.detailTextLabel?.text = boardingPass.versionNumberBeginning
+        case 16:
+            cell.textLabel?.text = "Version # :"
+            cell.detailTextLabel?.text = boardingPass.versionNumber
+        case 17:
+            cell.textLabel?.text = "Following Data Structure :"
+            cell.detailTextLabel?.text = boardingPass.followingStructureMessageSize.string
+        case 18:
+            cell.textLabel?.text = "Passenger Description :"
+            cell.detailTextLabel?.text = boardingPass.passengerDescription.string
+        case 19:
+            cell.textLabel?.text = "Check-In Source :"
+            cell.detailTextLabel?.text = boardingPass.checkInSource
+        case 20:
+            cell.textLabel?.text = "Boarding Pass Source :"
+            cell.detailTextLabel?.text = boardingPass.boardingPassSource
+        case 21:
+            cell.textLabel?.text = "Boarding Pass Issue Date :"
+            cell.detailTextLabel?.text = boardingPass.boardingPassIssueDate
+        case 22:
+            cell.textLabel?.text = "Document Type :"
+            cell.detailTextLabel?.text = boardingPass.documentType
+        case 23:
+            cell.textLabel?.text = "Boarding Pass Issuer :"
+            cell.detailTextLabel?.text = boardingPass.airlineBoardingPassIssuer
+        case 24:
+            cell.textLabel?.text = "Baggage Tag :"
+            cell.detailTextLabel?.text = boardingPass.baggageTag
         default:
             cell.textLabel?.text = ""
             cell.detailTextLabel?.text = ""

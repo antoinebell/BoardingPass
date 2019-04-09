@@ -123,7 +123,7 @@ struct BoardingPass: Decodable {
     /// **Conditional** | The description of the passenger.
     /// *- Item 15 -*
     /// Example : "0" (adult), "4" (infant), "6" (adult with an infant)
-    let passengerDescription: Int
+    let passengerDescription: String
     /// Size of the `passengerDescription`.
     private let kPassengerDescriptionSize: Int = 1
     /// Size of the combined previous conditional data.
@@ -182,6 +182,17 @@ struct BoardingPass: Decodable {
     private var kAirlineBoardingPassIssuerSizePrevious: Int = 12
     /// Size of the combined previous structured message (Item 10)
     private let kAirlineBoardingPassIssuerSizeStructuredPrevious: Int = 8
+    
+    /// **Conditional** | Bag tag numbers and number of consecutive bags
+    /// *- Item 23 -*
+    /// Example : "LX", "SK"
+    let baggageTag: String
+    /// Size of `documentType`
+    private let kBaggageTagSize: Int = 13
+    /// Size of the combined previous data.
+    private var kBaggageTagSizePrevious: Int = 15
+    /// Size of the combined previous structured message (Item 10)
+    private let kBaggageTagSizeStructuredPrevious: Int = 11
     
     //MARK: - Initialisation
     init(from data: String) throws {
@@ -243,21 +254,21 @@ struct BoardingPass: Decodable {
         //Conditional
         
         //Version number beginning
-        if self.variableSize > (kVersionNumberBeginningPrevious + kVersionNumberBeginningSize) {
+        if self.variableSize >= (kVersionNumberBeginningPrevious + kVersionNumberBeginningSize) {
             self.versionNumberBeginning = data[kMandatoryItemsSize + kVersionNumberBeginningPrevious].string
         } else {
             self.versionNumberBeginning = ""
         }
         
         //Version number
-        if self.variableSize > (kVersionNumberSizePrevious + kVersionNumberSize) {
+        if self.variableSize >= (kVersionNumberSizePrevious + kVersionNumberSize) {
             self.versionNumber = data[kMandatoryItemsSize + kVersionNumberSizePrevious].string
         } else {
             self.versionNumber = "0"
         }
         
         //Following structure message size
-        if self.variableSize > (kFollowingStructureMessageSizePrevious + kFollowingStructureMessageSizeSize) {
+        if self.variableSize >= (kFollowingStructureMessageSizePrevious + kFollowingStructureMessageSizeSize) {
             let startIndex = kMandatoryItemsSize + kFollowingStructureMessageSizePrevious
             let endIndex = kMandatoryItemsSize + kFollowingStructureMessageSizePrevious + kFollowingStructureMessageSizeSize - 1
             let messageSize = data[startIndex...endIndex].string
@@ -272,56 +283,62 @@ struct BoardingPass: Decodable {
         //Following structured message (Item 10)
 
         //Passenger description
-        if self.followingStructureMessageSize > (kPassengerDescriptionSizeStructuredPrevious + kPassengerDescriptionSize) {
+        if self.followingStructureMessageSize >= (kPassengerDescriptionSizeStructuredPrevious + kPassengerDescriptionSize) {
             let index = kMandatoryItemsSize + kPassengerDescriptionSizePrevious
-            guard data[index].string.isInt else {
-                throw BoardingPassError.invalidPassengerDescription
-            }
-            self.passengerDescription = Int(data[index].string)!
+            self.passengerDescription = data[index].string
         } else {
-            self.passengerDescription = 99
+            self.passengerDescription = ""
         }
         
         //Check-in Source
-        if self.followingStructureMessageSize > (kCheckInSourceSizeStructuredPrevious + kCheckInSourceSize) {
+        if self.followingStructureMessageSize >= (kCheckInSourceSizeStructuredPrevious + kCheckInSourceSize) {
             let index = kMandatoryItemsSize + kCheckInSourceSizePrevious
             self.checkInSource = data[index].string
         } else {
-            self.checkInSource = ""
+            self.checkInSource = "No Data"
         }
         
         //Boarding Pass Source
-        if self.followingStructureMessageSize > (kBoardingPassSizeStructuredPrevious + kBoardingPassSourceSize) {
+        if self.followingStructureMessageSize >= (kBoardingPassSizeStructuredPrevious + kBoardingPassSourceSize) {
             let index = kMandatoryItemsSize + kBoardingPassSizePrevious
             self.boardingPassSource = data[index].string
         } else {
-            self.boardingPassSource = ""
+            self.boardingPassSource = "No Data"
         }
         
         //Boarding Pass Issue Date
-        if self.followingStructureMessageSize > (kBoardingPassIssueDateSizeStructuredPrevious + kBoardingPassIssueDateSize) {
+        if self.followingStructureMessageSize >= (kBoardingPassIssueDateSizeStructuredPrevious + kBoardingPassIssueDateSize) {
             let startIndex = kMandatoryItemsSize + kBoardingPassIssueDateSizePrevious
             let endIndex = kMandatoryItemsSize + kBoardingPassIssueDateSizePrevious + kBoardingPassIssueDateSize - 1
             self.boardingPassIssueDate = data[startIndex...endIndex].string
         } else {
-            self.boardingPassIssueDate = ""
+            self.boardingPassIssueDate = "No Data"
         }
         
         //Document Type
-        if self.followingStructureMessageSize > (kDocumentTypeSizeStructuredPrevious + kDocumentTypeSize) {
+        if self.followingStructureMessageSize >= (kDocumentTypeSizeStructuredPrevious + kDocumentTypeSize) {
             let index = kMandatoryItemsSize + kDocumentTypeSizePrevious
             self.documentType = data[index].string
         } else {
-            self.documentType = ""
+            self.documentType = "No Data"
         }
         
         //Airline boarding pass issuer
-        if self.followingStructureMessageSize > (kAirlineBoardingPassIssuerSizeStructuredPrevious + kAirlineBoardingPassIssuerSize) {
+        if self.followingStructureMessageSize >= (kAirlineBoardingPassIssuerSizeStructuredPrevious + kAirlineBoardingPassIssuerSize) {
             let startIndex = kMandatoryItemsSize + kAirlineBoardingPassIssuerSizePrevious
             let endIndex = kMandatoryItemsSize + kAirlineBoardingPassIssuerSizePrevious + kAirlineBoardingPassIssuerSize - 1
             self.airlineBoardingPassIssuer = data[startIndex...endIndex].string
         } else {
-            self.airlineBoardingPassIssuer = ""
+            self.airlineBoardingPassIssuer = "No Data"
+        }
+        
+        //Baggage Tag
+        if self.followingStructureMessageSize > (kBaggageTagSizeStructuredPrevious + kBaggageTagSize) {
+            let startIndex = kMandatoryItemsSize + kBaggageTagSizeStructuredPrevious
+            let endIndex = kMandatoryItemsSize + kBaggageTagSizeStructuredPrevious + kBaggageTagSize - 1
+            self.baggageTag = data[startIndex...endIndex].string
+        } else {
+            self.baggageTag = "No Data"
         }
     }
     

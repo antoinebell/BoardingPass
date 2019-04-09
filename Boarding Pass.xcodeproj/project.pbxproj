@@ -14,6 +14,18 @@
 		65D638F6225BCE0A00FA9726 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D638F4225BCE0A00FA9726 /* LaunchScreen.storyboard */; };
 		65D638FE225BCE2D00FA9726 /* BoardingPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D638FD225BCE2D00FA9726 /* BoardingPass.swift */; };
 		65D63900225CE96E00FA9726 /* BoardingPassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D638FF225CE96E00FA9726 /* BoardingPassTableViewController.swift */; };
+		65D6390E225D185300FA9726 /* SFMono-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D63902225D185200FA9726 /* SFMono-LightItalic.otf */; };
+		65D6390F225D185300FA9726 /* SFMono-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D63903225D185300FA9726 /* SFMono-Heavy.otf */; };
+		65D63910225D185300FA9726 /* SFMono-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D63904225D185300FA9726 /* SFMono-Bold.otf */; };
+		65D63911225D185300FA9726 /* SFMono-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D63905225D185300FA9726 /* SFMono-Medium.otf */; };
+		65D63912225D185300FA9726 /* SFMono-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D63906225D185300FA9726 /* SFMono-BoldItalic.otf */; };
+		65D63913225D185300FA9726 /* SFMono-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D63907225D185300FA9726 /* SFMono-Regular.otf */; };
+		65D63914225D185300FA9726 /* SFMono-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D63908225D185300FA9726 /* SFMono-Light.otf */; };
+		65D63915225D185300FA9726 /* SFMono-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D63909225D185300FA9726 /* SFMono-Semibold.otf */; };
+		65D63916225D185300FA9726 /* SFMono-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D6390A225D185300FA9726 /* SFMono-SemiboldItalic.otf */; };
+		65D63917225D185300FA9726 /* SFMono-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D6390B225D185300FA9726 /* SFMono-RegularItalic.otf */; };
+		65D63918225D185300FA9726 /* SFMono-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D6390C225D185300FA9726 /* SFMono-HeavyItalic.otf */; };
+		65D63919225D185300FA9726 /* SFMono-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65D6390D225D185300FA9726 /* SFMono-MediumItalic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +38,18 @@
 		65D638F7225BCE0A00FA9726 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65D638FD225BCE2D00FA9726 /* BoardingPass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardingPass.swift; sourceTree = "<group>"; };
 		65D638FF225CE96E00FA9726 /* BoardingPassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingPassTableViewController.swift; sourceTree = "<group>"; };
+		65D63902225D185200FA9726 /* SFMono-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-LightItalic.otf"; sourceTree = "<group>"; };
+		65D63903225D185300FA9726 /* SFMono-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-Heavy.otf"; sourceTree = "<group>"; };
+		65D63904225D185300FA9726 /* SFMono-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-Bold.otf"; sourceTree = "<group>"; };
+		65D63905225D185300FA9726 /* SFMono-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-Medium.otf"; sourceTree = "<group>"; };
+		65D63906225D185300FA9726 /* SFMono-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-BoldItalic.otf"; sourceTree = "<group>"; };
+		65D63907225D185300FA9726 /* SFMono-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-Regular.otf"; sourceTree = "<group>"; };
+		65D63908225D185300FA9726 /* SFMono-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-Light.otf"; sourceTree = "<group>"; };
+		65D63909225D185300FA9726 /* SFMono-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-Semibold.otf"; sourceTree = "<group>"; };
+		65D6390A225D185300FA9726 /* SFMono-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		65D6390B225D185300FA9726 /* SFMono-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-RegularItalic.otf"; sourceTree = "<group>"; };
+		65D6390C225D185300FA9726 /* SFMono-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-HeavyItalic.otf"; sourceTree = "<group>"; };
+		65D6390D225D185300FA9726 /* SFMono-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFMono-MediumItalic.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,8 +90,28 @@
 				65D638F2225BCE0A00FA9726 /* Assets.xcassets */,
 				65D638F4225BCE0A00FA9726 /* LaunchScreen.storyboard */,
 				65D638F7225BCE0A00FA9726 /* Info.plist */,
+				65D63901225D184600FA9726 /* SFMono */,
 			);
 			path = "Boarding Pass";
+			sourceTree = "<group>";
+		};
+		65D63901225D184600FA9726 /* SFMono */ = {
+			isa = PBXGroup;
+			children = (
+				65D63904225D185300FA9726 /* SFMono-Bold.otf */,
+				65D63906225D185300FA9726 /* SFMono-BoldItalic.otf */,
+				65D63903225D185300FA9726 /* SFMono-Heavy.otf */,
+				65D6390C225D185300FA9726 /* SFMono-HeavyItalic.otf */,
+				65D63908225D185300FA9726 /* SFMono-Light.otf */,
+				65D63902225D185200FA9726 /* SFMono-LightItalic.otf */,
+				65D63905225D185300FA9726 /* SFMono-Medium.otf */,
+				65D6390D225D185300FA9726 /* SFMono-MediumItalic.otf */,
+				65D63907225D185300FA9726 /* SFMono-Regular.otf */,
+				65D6390B225D185300FA9726 /* SFMono-RegularItalic.otf */,
+				65D63909225D185300FA9726 /* SFMono-Semibold.otf */,
+				65D6390A225D185300FA9726 /* SFMono-SemiboldItalic.otf */,
+			);
+			path = SFMono;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,8 +172,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D63913225D185300FA9726 /* SFMono-Regular.otf in Resources */,
 				65D638F6225BCE0A00FA9726 /* LaunchScreen.storyboard in Resources */,
+				65D63914225D185300FA9726 /* SFMono-Light.otf in Resources */,
+				65D63917225D185300FA9726 /* SFMono-RegularItalic.otf in Resources */,
 				65D638F3225BCE0A00FA9726 /* Assets.xcassets in Resources */,
+				65D63916225D185300FA9726 /* SFMono-SemiboldItalic.otf in Resources */,
+				65D63912225D185300FA9726 /* SFMono-BoldItalic.otf in Resources */,
+				65D63910225D185300FA9726 /* SFMono-Bold.otf in Resources */,
+				65D63915225D185300FA9726 /* SFMono-Semibold.otf in Resources */,
+				65D63918225D185300FA9726 /* SFMono-HeavyItalic.otf in Resources */,
+				65D6390E225D185300FA9726 /* SFMono-LightItalic.otf in Resources */,
+				65D63911225D185300FA9726 /* SFMono-Medium.otf in Resources */,
+				65D63919225D185300FA9726 /* SFMono-MediumItalic.otf in Resources */,
+				65D6390F225D185300FA9726 /* SFMono-Heavy.otf in Resources */,
 				65D638F1225BCE0700FA9726 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

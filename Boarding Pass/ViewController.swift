@@ -19,9 +19,14 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     //MARK: BoardingPass
     var boardingPass: BoardingPass!
+    
+    //MARK: UI
+    @IBOutlet var boardingPassButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        boardingPassButton.alpha = 0
         
         prepareForScan()
     }
@@ -65,7 +70,9 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
                     boardingPass = try BoardingPass(from: metadata!)
                     dump(boardingPass)
                     
-                    //performSegue(withIdentifier: "showDetail", sender: self)
+                    DispatchQueue.main.async {
+                        self.boardingPassButton.alpha = 1
+                    }
                     
                 } catch {
                     print(error)
